@@ -13,9 +13,10 @@ def create_app():
 
     db.init_app(app)
     migrate.init_app(app, db)
+    from . import models
 
-    from .views import main, signin
+    from .views import main, sign
     app.register_blueprint(main.bp)
-    app.register_blueprint(signin.bp)
+    app.register_blueprint(sign.bp)
     
     return app

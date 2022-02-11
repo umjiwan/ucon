@@ -8,4 +8,7 @@ class SignUpForm(FlaskForm):
     password1 = PasswordField('password', validators=[
         DataRequired(), EqualTo('password2', '비밀번호가 일치하지 않습니다')])
     password2 = PasswordField('password_2', validators=[DataRequired()])
-    
+
+class SignInForm(FlaskForm):
+    username = StringField("username", validators=[DataRequired(), Length(min=3, max=12)])
+    password = PasswordField('password', validators=[DataRequired()])

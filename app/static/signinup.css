@@ -1,0 +1,59 @@
+nav {
+    position: fixed;
+}
+
+main {
+    display: flex;
+    height: calc(100vh - 56px); /*상단바 사용 안할시 height: 100vh; */
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-42px);
+}
+
+main form {
+    width: 400px;
+    margin: 40px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+label {
+    font-size: 16px;
+    color: #6C757D;
+}
+
+input {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 58px;
+}
+
+.href {
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 22px;
+}
+
+.href a {
+    color: #000;
+}
+
+main button {
+    width: 100%;
+}
+
+footer {
+    position: fixed;  
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: #F8F9FA;
+    color: #6C757D;
+    text-align: center;
+    line-height: 30px;
+}

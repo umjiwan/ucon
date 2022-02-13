@@ -1,23 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
-    <form method="post">
-        {{ form.csrf_token }}
-        {% include "form_errors.html" %}
+<link rel="stylesheet" href="{{ url_for('static', filename='signinup.css') }}">
 
-        <div class="form-group">
-            <label for="username">username</label>
-            <input type="text" name="username" id="username"
-                   value="{{ form.username.data or '' }}">
-        </div>
+<main>
+    <div class="card">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-        <div class="form-group">
-            <label for="password">password</label>
-            <input type="password" name="password" id="password"
-                   value="{{ form.password.data or '' }}">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                type="button" role="tab" aria-controls="contact" aria-selected="true">Sign In</button>
+            </li>
+            
+            <a href="{{ url_for('sign.SignUp') }}" style="text-decoration-line: none;">
+                <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                type="button" role="tab" aria-controls="profile" aria-selected="false">Sign Up</button>
+                </li>
+            </a>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade  show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <form method="post" class="form-floating">
+                    
+                    {{ form.csrf_token }}
+                    {% include "form_errors.html" %}
+
+                    <h2>Sign In</h2>
+            
+                    <div class="form-floating">
+                        <label for="text">nickname</label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="ex) ulhangry" required value="">
+                    </div>
+
+                    <div class="form-floating">
+                        <label for="password">password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder=""
+                            required value="">
+                    </div>
+            
+                    <button type="submit" class="btn btn-outline-primary">Sign In</button>
+                </form>
+            </div>
         </div>
-        
-        <button type="submit">Sign In</button>
-    </form>
-</div>
+    </div>
+</main>
 {% endblock %}

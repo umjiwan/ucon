@@ -1,34 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
-    <form method="post">
-        {% include "form_errors.html" %}
-        {{ form.csrf_token }}
-        <div>
-            <label for="username">username</label>
-            <input type="text" name="username" id="username" 
-                value="{{ form.username.data or '' }}">
-        </div>
+<link rel="stylesheet" href="{{ url_for('static', filename='signinup.css') }}">
 
-        <div>
-            <label for="password1">password_1</label>
-            <input type="password" name="password1" id="password1"
-                value="{{ form.password1.data or '' }}">
-        </div>
+<main>
+    <div class="card">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
 
-        <div>
-            <label for="password2">password_2</label>
-            <input type="password" name="password2" id="password2"
-                value="{{ form.password2.data or '' }}">
-        </div>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact"
+                type="button" role="tab" aria-controls="contact" aria-selected="true">Sign Up</button>
+            </li>
+            
+            <a href="{{ url_for('sign.SignIn') }}" style="text-decoration-line: none;">
+                <li class="nav-item" role="presentation">
+                <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                type="button" role="tab" aria-controls="profile" aria-selected="false">Sign In</button>
+                </li>
+            </a>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade  show active" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                <form method="post" class="form-floating">
+                    
+                    {{ form.csrf_token }}
 
-        <div>
-            <label for="email">email</label>
-            <input type="text" name="email" id="email"
-                   value="{{ form.email.data or '' }}">
+                    <h2>Sign Up</h2>
+                    <div>
+                        <label for="username">username</label>
+                        <input type="text" name="username" id="username" 
+                            value="{{ form.username.data or '' }}" class="form-control" placeholder="ex) ulhangry">
+                    </div>
+            
+                    <div>
+                        <label for="password1">password</label>
+                        <input type="password" name="password1" id="password1"
+                            value="{{ form.password1.data or '' }}" class="form-control">
+                    </div>
+            
+                    <div>
+                        <label for="password2">confirm password</label>
+                        <input type="password" name="password2" id="password2"
+                            value="{{ form.password2.data or '' }}" class="form-control">
+                    </div>
+            
+                    <div>
+                        <label for="email">email</label>
+                        <input type="text" name="email" id="email"
+                               value="{{ form.email.data or '' }}" class="form-control" placeholder="ex) ulhangry@gmail.com">
+                    </div>
+                    
+                    {% include "form_errors.html" %}
+                    <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+                </form>
+            </div>
         </div>
-
-        <button type="submit">Sign up</button>
-    </form>
-</div>
+    </div>
+</main>
 {% endblock %}

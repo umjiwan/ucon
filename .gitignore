@@ -2,3 +2,5 @@ __pycache__
 app/__pycache__
 app/views/__pycache__
 ucon.db
+.DS_Store
+app/.DS_Store
